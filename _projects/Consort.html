@@ -1,0 +1,66 @@
+---
+title: Consort CMake
+---
+
+<a href="https://github.com/consort-cmake/consort-cmake">Consort CMake</a> is a
+set of opinionated functions and macros for
+<a href="http://www.cmake.org/">CMake</a> designed to make managing large
+projects easier.
+
+
+<h2><i class="fa fa-code fa-2x"></i> Declarative</h2>
+<p>
+	The Consort syntax for creating targets is designed to look
+	"declarative", making it easier to read and remember how to
+	add new targets. Stop worrying about your build environment and
+	start focusing on your code!
+
+<h2><i class="fa fa-tachometer fa-2x"></i> YASM</h2>
+<p>
+	Out-of-the-box support for YASM assembly makes it as painless as
+	possible to add ASM optimisations to your code that will behave
+	the same way regardless of the targeted compiler. Consort adds
+	plenty of convenience macros as well, so when your assembler
+	needs to know about the target platform you can easily use the
+	YASM preprocessor to switch on the appropriate instructions to
+	handle platform specific calling conventions.
+</p>
+
+<h2><i class="fa fa-desktop fa-2x"></i> Qt</h2>
+<p>
+	Out-of-the-box support for Qt makes it easy to incorporate Qt
+	into your build. Consort can find Qt for you, and perform much
+	of the configuration necessary to build Qt UI files, resources
+	and translations into your code.
+</p>
+
+<h2><i class="fa fa-rocket fa-2x"></i> Boost</h2>
+<p>
+	Out-of-the-box support for Boost means you can easily make use
+	of the boost libraries in your code. Consort will sanitise the
+	boost libraries as much as possible to make sure you have an
+	easy to use and consistent cross platform build.
+</p>
+
+<h2><i class="fa fa-gears fa-2x"></i> Modules</h2>
+<p>
+	Consort's built in module system makes it easy to share code,
+	without slowing down your build by introducing targets that
+	don't need to be built. Consort will automatically detect when
+	you link to a module, and include the CMake code necessary to
+	build that target. Plus, no more merge conflicts on the top
+	level CMakeLists.txt as it won't need updating as often.
+</p>
+
+<h2>And more...</h2>
+<p>
+	Consort includes numerous other options and default
+	configuration to help you get your project up and running faster,
+	including automatically setting suitable warning levels, adding
+	consistently named #defines for architecture and platform, and
+	tools to copy required resources to your build directory.
+</p>
+
+<a href="https://github.com/consort-cmake/consort-cmake" title="Consort CMake" class="read-more">
+	Fork Consort CMake on GitHub!
+</a>

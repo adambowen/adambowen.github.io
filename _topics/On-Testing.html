@@ -1,0 +1,23 @@
+---
+title: "On Testing"
+---
+
+In this series I want to talk about how I approach testing and some of my
+personal philosophy on the subject.
+
+<div class="posts">
+  {% for post in site.posts %}
+    {% if post.tags contains 'testing' %}
+      <article class="post">
+
+        <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
+
+        <div class="entry">
+          {{ post.excerpt }}
+        </div>
+
+        <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
+      </article>
+    {% endif %}
+  {% endfor %}
+</div>

@@ -1,0 +1,19 @@
+---
+layout: default
+permalink: /topics/
+---
+
+<div class="posts">
+  {% for topic in site.topics %}
+    <article class="post">
+
+      <h1><a href="{{ site.baseurl }}{{ topic.url }}">{{ topic.title }}</a></h1>
+
+      <div class="entry">
+        {{ topic.excerpt }}
+      </div>
+
+      <a href="{{ site.baseurl }}{{ topic.url }}" class="read-more">Read More</a>
+    </article>
+  {% endfor %}
+</div>

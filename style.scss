@@ -150,6 +150,18 @@ img {
 // .masthead
 //
 
+html, body {
+  height: 100%;
+}
+#main-container {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column
+}
+#main {
+  flex-grow: 1;
+}
+
 .wrapper-masthead {
   margin-bottom: 50px;
 }
@@ -264,11 +276,11 @@ nav {
   .comments {
     margin-top: 10px;
   }
+}
 
-  .read-more {
-    text-transform: uppercase;
-    font-size: 15px;
-  }
+.read-more {
+  text-transform: uppercase;
+  font-size: 15px;
 }
 
 .wrapper-footer {
@@ -281,6 +293,18 @@ nav {
 footer {
   padding: 20px 0;
   text-align: center;
+}
+
+.copyright {
+  font-size: 0.75em;
+}
+
+a.footnote::before {
+  content: '['
+}
+
+a.footnote::after {
+  content: ']'
 }
 
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
