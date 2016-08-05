@@ -19,7 +19,7 @@ Does Brian [^brian] WTF every time he looks at someone else's test code to
 see why it's failing?
 Do you see a lot of regressions between software versions?
 
-![_config.yml]({{ site.baseurl }}/images/no-testing.png)
+![A hang glider full of holes]({{ site.baseurl }}/images/no-testing.png "Turns out I can't draw")
 
 If you answered "yes" to any of these, then there might be something for you
 here.
@@ -49,7 +49,7 @@ is really important.
 I also quickly realised that automated testing is a way to minimise the burden
 in a small company without any kind of dedicated test or QA.
 
-![_config.yml]({{ site.baseurl }}/images/live-patching.png)
+![The push-first-fix-later approach]({{ site.baseurl }}/images/live-patching.png "Inspired by XKCD!")
 
 So, at this point in my career I had established that testing is good.
 Testing makes life better, less stressful, and gives you confidence that what
