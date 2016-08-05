@@ -28,6 +28,13 @@ you might want to in the future you might find it worth a read. If not, you
 might still find it worth a read - but there is a wealth of other information
 out there too!
 
+## Why Deus ex machina?
+
+"Deus ex machina" literally means "god from the machine", it reflects my 
+interest in machine learning as well as the idea that (for many) software 
+can be a kind of magical black box. It does not imply anything about the 
+abilities of the author!
+
 ## Contact Adam
 
 * [Adam on LinkedIn](https://www.linkedin.com/in/adammabowen)
