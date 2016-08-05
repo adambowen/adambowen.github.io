@@ -13,7 +13,7 @@ image management for police forces, tools for visualising medical DICOM images,
 and a [highly scalable HPC debugger and profiler](www.allinea.com). He has a cat
 called Toffee.
 
-![_config.yml]({{ site.baseurl }}/images/toffee.jpg)
+![Toffee]({{ site.baseurl }}/images/toffee.jpg "He's so fluffy!")
 
 He is interested in what it takes to make software development work in
 commercial environments, everything from deciding what features are important,
