@@ -6,7 +6,7 @@ In this series I want to talk about how I approach testing and some of my
 personal philosophy on the subject.
 
 <div class="posts">
-  {% for post in site.posts %}
+  {% for post in site.posts reversed %}
     {% if post.tags contains 'testing' %}
       <article class="post">
 
