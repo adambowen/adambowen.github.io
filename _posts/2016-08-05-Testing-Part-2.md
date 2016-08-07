@@ -15,7 +15,7 @@ As a fledgling test developer you're going to hear a lot of terms, unit testing,
 integration testing, smoke testing, regression testing, scenario testing, and so
 on and so forth.
 And you're probably going to hear a lot of phrases like "that doesn't belong
-there, that's an integration test not a regression test".
+there, that's an integration test not a unit test".
 
 My advice?
 Don't get hung up on the terms, there are really only two variables that matter
