@@ -15,8 +15,46 @@ layout: default
 
   <div>
   	<small>
-  		Want to see the edit history? <a href="https://github.com/adambowen/adambowen.github.io/tree/master/_posts">Check the source on Github</a>.
-  	</small>
+      Want to see the edit history? <a href="https://github.com/adambowen/adambowen.github.io/tree/master/_posts">Check the source on Github</a>.
+    </small>
+  </div>
+
+  <div>
+    {% assign tag = page.tags[0] %}
+    {% assign previous = null %}
+    {% assign categoryPrevious = null %}
+    {% assign categoryNext = null %}
+    {% for other_post in site.tags[tag] reversed %}
+      {% if other_post.url == page.url %}
+        {% assign categoryPrevious = previous %}
+      {% endif %}
+      {% if previous.url == page.url %}
+        {% assign categoryNext = other_post %}
+      {% endif %}
+      {% assign previous = other_post %}
+    {% endfor %}
+
+    <h4>More in this series</h4>
+    {% if categoryPrevious.url %}
+      <a class="prev" href="{{categoryPrevious.url}}">&laquo; {{categoryPrevious.title}}</a>
+    {% endif %}
+    {% if categoryPrevious.url and categoryNext.url %}|{% endif %}
+    {% if categoryNext.url %}
+      <a class="next" href="{{categoryNext.url}}">{{categoryNext.title}} &raquo;</a>
+    {% endif %}
+
+    {% if page.previous.url != categoryPrevious.url or page.next.url != categoryNext.url %}
+      <h4>More posts</h4>
+      {% if page.previous.url %}
+        <a class="prev" href="{{page.previous.url}}">&laquo; {{page.previous.title}}</a>
+      {% endif %}
+      {% if page.previous.url and page.next.url %}|{% endif %}
+      {% if page.next.url %}
+        <a class="next" href="{{page.next.url}}">{{page.next.title}} &raquo;</a>
+      {% endif %}
+    {% endif %}
+
+
   </div>
 
   {% include disqus.html %}
