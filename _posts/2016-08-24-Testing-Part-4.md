@@ -73,7 +73,7 @@ Here's the prototype for a much stripped down baby vector of integers.
         void push_back(int value);
         void pop_back();
         int& operator[](int index);
-        const int& operator[](int index) const);
+        const int& operator[](int index) const;
 
         int *m_data;
         int m_size;
