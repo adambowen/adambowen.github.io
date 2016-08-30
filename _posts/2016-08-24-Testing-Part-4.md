@@ -63,74 +63,13 @@ get what's going on.
 In C++ a vector is basically a dynamic, 1D array.
 Here's the prototype for a much stripped down baby vector of integers.
 
-    class baby_vector
-    {
-    public:
-        baby_vector();
-        ~baby_vector();
+{% highlight cpp %}
+{% include code/baby_vector/baby_vector.h %}
+{% endhighlight %}
 
-        int size() const;
-        void push_back(int value);
-        void pop_back();
-        int& operator[](int index);
-        const int& operator[](int index) const;
-
-        int *m_data;
-        int m_size;
-        int m_capacity;
-    };
-
-    baby_vector::baby_vector() :
-        m_data(),
-        m_size(),
-        m_capacity()
-    {
-    }
-
-    baby_vector::~baby_vector()
-    {
-        delete[] m_data;
-        m_data = NULL;
-        m_size = m_capacity = 0;
-    }
-
-    int baby_vector::size() const
-    {
-        return m_size;
-    }
-
-    void baby_vector::push_back(int value)
-    {
-        if(m_size+1 < m_capacity)
-        {
-            m_capacity = m_size+1;
-
-            int *tmp = new int[m_capacity];
-            for(int i=0; i<m_size; ++i)
-                tmp[i] = m_data[i];
-            delete[] m_data;
-            m_data = tmp;
-        }
-
-        m_data[m_size] = value;
-        ++m_size;
-    }
-
-    void baby_vector::pop_back()
-    {
-        if(m_size>0)
-            --m_size;
-    }
-
-    int& baby_vector::operator[](int index)
-    {
-        return m_data[index];
-    }
-
-    const int& baby_vector::operator[](int index) const
-    {
-        return m_data[index];
-    }
+{% highlight cpp %}
+{% include code/baby_vector/baby_vector.cpp %}
+{% endhighlight %}
 
 Please note, this is deliberately basic, and includes some poor design decisions
 purely for illustrative purposes.
@@ -139,40 +78,9 @@ immediately call you out for not using `std::vector<int>` then something is very
 
 So, let's write a super bad unit test for this guy.
 
-    TEST_CASE("baby_vector")
-    {
-        // check that size returns the size
-        baby_vector v;
-        v.m_size = 42;
-        CHECK( v.size() == 42 );
-
-        // check that push_back allocates and adds the item to the
-        // end
-        v.m_size = 0;
-        v.push_back(42);
-        REQUIRE( v.m_data );
-        CHECK( v.m_data[0] == 42 );
-        CHECK( v.m_size == 1 );
-        CHECK( v.m_capacity == 1 );
-
-        // check that pop_back removes something from the end of
-        // the array
-        v.pop_back();
-        CHECK( v.m_size == 0 );
-
-        // check that operator[] works
-        int data[2] = {11,12};
-        v.m_data = data;
-        v.m_size = 2;
-        v.m_capacity = 2;
-
-        CHECK(v[0] == 11);
-        CHECK(v[1] == 12);
-        CHECK(static_cast<const baby_vector&>(v)[0] == 11);
-        CHECK(static_cast<const baby_vector&>(v)[1] == 12);
-
-        v.m_data = NULL;
-    }
+{% highlight cpp %}
+{% include code/baby_vector/bad_test.cpp %}
+{% endhighlight %}
 
 When I see tests like this, two things jump out at me.
 First, judging by the comments, the person writing it wasn't thinking
@@ -226,222 +134,26 @@ then you'll find it a lot easier to design and implement your tests.
 The nice thing about the Catch framework is that we can translate these
 statements directly into the scaffolding of our test.
 
-    #define CATCH_WITH_MAIN
-    #include "catch.hpp"
-
-    SCENARIO("You can add things to the end of the vector")
-    {
-        GIVEN("an empty vector")
-        {
-            WHEN("push_back is called with a value of 4")
-            {
-                THEN("the size is 1")
-                {
-                }
-
-                THEN("the item at index 0 is 4")
-                {
-                }
-            }
-        }
-
-        GIVEN("a vector containing 4 1 3")
-        {
-            WHEN("push_back is called with a value of 5")
-            {
-                THEN("the size is 4")
-                {
-                }
-
-                THEN("the item at index 3 is 5")
-                {
-                }
-            }
-        }
-    }
-
-    SCENARIO("You can remove things from the end of the vector.")
-    {
-        GIVEN("a vector containing 4 1 3")
-        {
-            WHEN("pop_back is called")
-            {
-                THEN("the size is 2")
-                {
-                }
-
-                THEN("the first two items are unchanged")
-                {
-                }
-            }
-        }
-    }
-
-    SCENARIO("You can read and write using the [] operator.")
-    {
-        GIVEN("a vector containing 4 1 3")
-        {
-            THEN("the item at index 0 is 4")
-            {
-            }
-
-            THEN("the item at index 1 is 1")
-            {
-            }
-
-            THEN("the item at index 2 is 3")
-            {
-            }
-
-            WHEN("5 is written to index 1")
-            {
-                THEN("the item at index 0 is 4")
-                {
-                }
-
-                THEN("the item at index 1 is 5")
-                {
-                }
-
-                THEN("the item at index 2 is 3")
-                {
-                }
-            }
-        }
-    }
+{% highlight cpp %}
+{% include code/baby_vector/skeleton.cpp %}
+{% endhighlight %}
 
 See...no code written, but already the structure of our test is mapped out.
 If you like, have a go at filling it in, it should pass.
 
 Here's what I get:
 
-    #define CATCH_WITH_MAIN
-    #include "catch.hpp"
-
-    SCENARIO("You can add things to the end of the vector")
-    {
-        GIVEN("an empty vector")
-        {
-            baby_vector v;
-
-            WHEN("push_back is called with a value of 4")
-            {
-                v.push_back(4);
-
-                THEN("the size is 1")
-                {
-                    CHECK(v.size() == 1);
-                }
-
-                THEN("the item at index 0 is 4")
-                {
-                    CHECK(v[0] == 4);
-                }
-            }
-        }
-
-        GIVEN("a vector containing 4 1 3")
-        {
-            baby_vector v;
-            v.push_back(4);
-            v.push_back(1);
-            v.push_back(3);
-
-            WHEN("push_back is called with a value of 5")
-            {
-                v.push_back(5);
-
-                THEN("the size is 4")
-                {
-                    CHECK(v.size() == 4);
-                }
-
-                THEN("the item at index 3 is 5")
-                {
-                    CHECK(v[3] == 5);
-                }
-            }
-        }
-    }
-
-    SCENARIO("You can remove things from the end of the vector.")
-    {
-        GIVEN("a vector containing 4 1 3")
-        {
-            baby_vector v;
-            v.push_back(4);
-            v.push_back(1);
-            v.push_back(3);
-
-            WHEN("pop_back is called")
-            {
-                v.pop_back();
-
-                THEN("the size is 2")
-                {
-                    CHECK(v.size() == 2);
-                }
-
-                THEN("the first two items are unchanged")
-                {
-                    CHECK(v[0] == 4);
-                    CHECK(v[1] == 1);
-                }
-            }
-        }
-    }
-
-    SCENARIO("You can read and write using the [] operator.")
-    {
-        GIVEN("a vector containing 4 1 3")
-        {
-            baby_vector v;
-            v.push_back(4);
-            v.push_back(1);
-            v.push_back(3);
-
-            THEN("the item at index 0 is 4")
-            {
-                CHECK(v[0] == 4);
-            }
-
-            THEN("the item at index 1 is 1")
-            {
-                CHECK(v[1] == 1);
-            }
-
-            THEN("the item at index 2 is 3")
-            {
-                CHECK(v[2] == 3);
-            }
-
-            WHEN("5 is written to index 1")
-            {
-                v[1] = 5;
-
-                THEN("the item at index 0 is 4")
-                {
-                    CHECK(v[0] == 4);
-                }
-
-                THEN("the item at index 1 is 5")
-                {
-                    CHECK(v[1] == 5);
-                }
-
-                THEN("the item at index 2 is 3")
-                {
-                    CHECK(v[2] == 3);
-                }
-            }
-        }
-    }
+{% highlight cpp %}
+{% include code/baby_vector/good_test.cpp %}
+{% endhighlight %}
 
 Now, let's make a small implementation change and see if the tests survive.
 Let's change the definition of the `baby_vector` class to this:
 
-    #include <vector>
-    typedef std::vector<int> baby_vector;
+{% highlight cpp %}
+#include <vector>
+typedef std::vector<int> baby_vector;
+{% endhighlight %}
 
 I'm sure you'll agree this is a pretty small change, but the original test case
 would be utterly broken.
