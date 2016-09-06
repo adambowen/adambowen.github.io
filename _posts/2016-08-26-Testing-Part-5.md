@@ -124,7 +124,7 @@ phase near the start of the sprint, where the user stories and Mike Cohn's
 activities will likely have to be done in tandem with the programmers who are
 working on the features, the expertise of the tester in understanding how
 customers will utilise the software can be brought to bear in active
-discusssions on how best to implement the feature.
+discussions on how best to implement the feature.
 
 1. Understand the requirements of the customer
 2. _Work with developers to expand the story details into a more complete design_
