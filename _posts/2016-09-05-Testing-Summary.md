@@ -59,6 +59,9 @@ maintaining them.
 
 ### Tests should be self-contained
 
+We should build self contained tests that clearly state what is being tested,
+what has failed, and why, and nothing more.
+
 When diagnosing test failures, it is important to be able to see everything that
 a test does in order to understand its purpose. On the occasions when it is
 necessary to modify a test it is important to be able to determine all the
