@@ -135,7 +135,7 @@ A change in behaviour implies that all the code that depends on the changed
 behaviour might be broken, so a full audit of all the dependent code (triggered
 by the failing tests) is actually a necessary part of the development process.
 
-[^seradio]: http://www.se-radio.net/2016/05/se-radio-episode-256-jay-fields-on-working-effectively-with-unit-tests/
+[^seradio]: [SE-Radio Episode 256: Jay Fields on Working Effectively with Unit Tests](http://www.se-radio.net/2016/05/se-radio-episode-256-jay-fields-on-working-effectively-with-unit-tests/)
 
 ## Next time, on "On Testing"
 
