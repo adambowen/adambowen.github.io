@@ -30,12 +30,18 @@ out there too!
 
 ## Why Deus ex machina?
 
-"Deus ex machina" literally means "god from the machine", it reflects my 
-interest in machine learning as well as the idea that (for many) software 
-can be a kind of magical black box. It does not imply anything about the 
+"Deus ex machina" literally means "god from the machine", it reflects my
+interest in machine learning as well as the idea that (for many) software
+can be a kind of magical black box. It does not imply anything about the
 abilities of the author!
 
 ## Contact Adam
 
 * [Adam on LinkedIn](https://www.linkedin.com/in/adammabowen)
 * [Adam on StackOverflow](http://stackoverflow.com/cv/adambowen)
+
+## Attributions
+
+Portions of this site use the [XKCD](http://xkcd.com) [font](https://github.com/ipython/xkcd-font)
+which is licensed under the Creative Commons Attribution-NonCommercial 3.0 Unported
+licence.

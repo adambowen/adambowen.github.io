@@ -1,0 +1,23 @@
+---
+title: "The Case for Exceptions"
+---
+
+In this series I explore  the pros and cons of exceptions in detail,
+and try to offer some real examples alongside my own opinions.
+
+<div class="posts">
+  {% for post in site.posts reversed %}
+    {% if post.tags contains 'exceptions' %}
+      <article class="post">
+
+        <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
+
+        <div class="entry">
+          {{ post.excerpt }}
+        </div>
+
+        <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
+      </article>
+    {% endif %}
+  {% endfor %}
+</div>
