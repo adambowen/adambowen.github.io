@@ -34,13 +34,15 @@ layout: default
       {% assign previous = other_post %}
     {% endfor %}
 
-    <h4>More in this series</h4>
-    {% if categoryPrevious.url %}
-      <a class="prev" href="{{categoryPrevious.url}}">&laquo; {{categoryPrevious.title}}</a>
-    {% endif %}
-    {% if categoryPrevious.url and categoryNext.url %}|{% endif %}
-    {% if categoryNext.url %}
-      <a class="next" href="{{categoryNext.url}}">{{categoryNext.title}} &raquo;</a>
+    {% if categoryPrevious.url or categoryNext.url %}
+      <h4>More in this series</h4>
+      {% if categoryPrevious.url %}
+        <a class="prev" href="{{categoryPrevious.url}}">&laquo; {{categoryPrevious.title}}</a>
+      {% endif %}
+      {% if categoryPrevious.url and categoryNext.url %}|{% endif %}
+      {% if categoryNext.url %}
+        <a class="next" href="{{categoryNext.url}}">{{categoryNext.title}} &raquo;</a>
+      {% endif %}
     {% endif %}
 
     {% if page.previous.url != categoryPrevious.url or page.next.url != categoryNext.url %}
