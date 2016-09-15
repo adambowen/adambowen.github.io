@@ -50,6 +50,7 @@ process continues until the exception is handled.
 The key point here is that, until an exception is handled, no new instructions
 are introduced into the normal flow of control to support exceptions. Once an
 exception is thrown there is a lot of overhead (because we have to do all these
+lookups in the EH tables), but until that point there should be zero overhead.
 
 If we want, we can actually see what this looks like. Take this simple code
 snippet:
