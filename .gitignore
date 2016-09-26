@@ -10,3 +10,4 @@ node_modules
 package.json
 *.sublime-project
 *.sublime-workspace
+build
