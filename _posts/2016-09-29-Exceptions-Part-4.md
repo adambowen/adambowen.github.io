@@ -18,7 +18,7 @@ object design. Most objects can be classified into one of three types:
 
 - Data
 - Functional Objects
-- Data + Invariants
+- Data + Invariants [^interfaces]
 
 _Data_ objects are merely containers for data, where the set of valid states for
 objects is the outer product of the set of valid states of the members of the
@@ -34,10 +34,10 @@ a valid state, provided that the same is true of the members of the class.
 _Functional Objects_ are abstractions for some functional operation. In C++
 these are often lambdas and they may include some state that is part of the
 algorithm or some configuration that determines how the algorithm should
-operate. It is possible, but not essential, that exceptions can be used to
+operate. It is possible, but not essential, for exceptions to be used to
 handle invalid inputs when the constructor accepts inputs such as data or
 configuration. However, it is also entirely possible to design objects in this
-class such that they are always constructed in a valid state.
+category such that they are always constructed in a valid state.
 
 The last type, _Data + Invariants_ (D+I), is the one we are most interested in.
 It is also the one that most objects fall into. Unlike _data_ classes, the set
@@ -48,7 +48,13 @@ are useful because they help to reduce the set of valid states of the system.
 In "[On Testing Part 2](/Testing-Part-2/)" I talk about the different layers of
 the test pyramid. With D+I classes we can test that invariants are preserved at
 the unit level, and then assume that the invariants will hold at the levels
-above that thus implicitly increasing the coverage of the higher level tests.
+above. Thus, we implicitly increase the coverage of the higher level tests.
+
+[^interfaces]: You might wonder where interfaces fit in this categorisation. My
+	view is that interfaces can fall into any of the categories. Some interfaces
+	are just "accessors" for data which do not specify how that data is
+	represented. Some are "accessors" for functionality, and some provide
+	preserve invariants of one form or another.
 
 So why are exceptions beneficial to D+I classes? Well, it comes down to the
 strength of the invariants. If the initialisation of a class can fail then
@@ -68,3 +74,16 @@ it is generally poor form to assume that a pointer is not NULL. However, if you
 do all your initialisation in your constructor and fail with exceptions, then
 you can add 'the object is always initialised' to your list of invariants, and
 so it becomes easier and safer to make assumptions about the state of the object.
+
+So exceptions can strengthen object invariants, but this comes at the cost of
+having to maintain invariants in an exception-safe fashion.
+It is true that exceptions can make this more difficult because the fact that
+errors occur can be hidden - however, the _requirement_ to maintain invariants
+through error conditions is not additional, all code that handles errors must
+meet this requirement.
+
+Toward the end of the series I intend to look at the practices you can employ
+that make the process of writing exception safe code easier, and hopefully we
+will be able to look at how to go about preserving invariants. For now though,
+that's the end of this part of the series. In the next part I continue to
+discuss the benefits of exceptions.
