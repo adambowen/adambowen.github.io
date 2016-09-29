@@ -53,8 +53,8 @@ above. Thus, we implicitly increase the coverage of the higher level tests.
 [^interfaces]: You might wonder where interfaces fit in this categorisation. My
 	view is that interfaces can fall into any of the categories. Some interfaces
 	are just "accessors" for data which do not specify how that data is
-	represented. Some are "accessors" for functionality, and some provide
-	preserve invariants of one form or another.
+	represented. Some are "accessors" for functionality, and some provide an
+	interface that preserves invariants of one form or another.
 
 So why are exceptions beneficial to D+I classes? Well, it comes down to the
 strength of the invariants. If the initialisation of a class can fail then
