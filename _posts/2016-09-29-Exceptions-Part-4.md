@@ -77,8 +77,8 @@ so it becomes easier and safer to make assumptions about the state of the object
 
 So exceptions can strengthen object invariants, but this comes at the cost of
 having to maintain invariants in an exception-safe fashion.
-It is true that exceptions can make this more difficult because the fact that
-errors occur can be hidden - however, the _requirement_ to maintain invariants
+It is true that exceptions can make this more difficult because the occurance
+of errors can be hidden - however, the _requirement_ to maintain invariants
 through error conditions is not additional, all code that handles errors must
 meet this requirement.
 
