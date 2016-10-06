@@ -152,6 +152,18 @@ small {
   font-size: smaller;
 }
 
+.entry table thead tr {
+    border-bottom: 1px solid;
+}
+
+.entry table th {
+  font-weight: bold;
+}
+
+.entry table th, .entry table td {
+    padding: 3px;
+}
+
 /*********************/
 /* LAYOUT / SECTIONS */
 /*********************/
@@ -279,7 +291,7 @@ nav {
     border-left: 2px solid $gray;
     padding: 0.1em 1em;
     color: $gray;
-    font-size: 22px;
+    font-size: 110%;
     font-style: italic;
   }
 
