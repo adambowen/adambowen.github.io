@@ -29,7 +29,7 @@ What if we don't have tests? Then we are not refactoring! We can't be sure that
 our changes won't take a working system and break it, so we shouldn't be making
 the change.
 The only refactoring we can do in this case is to _add tests_ since adding tests
-cannot change the behaviour (assuming your test and production code is separated
+cannot change the behaviour (assuming your test and production code are separated
 - if not then you have problems my rambling is not going to help you with!).
 
 ### Why refactor?
@@ -41,7 +41,7 @@ Since our changes do not affect the product at all (by definition) you might ask
 invest resources in refactoring at all?
 The answer lies in the idea of technical debt.
 There are multiple definitions of technical debt, but the one I like is the one
-by Steve McConard:
+by Steve McConnell:
 
 > \[Technical debt is\] a design or construction approach that's expedient in the
   short term but that creates a technical context in which the same work will
